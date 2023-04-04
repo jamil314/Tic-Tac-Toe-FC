@@ -109,9 +109,9 @@ function App() {
     <div className="game">
       <Board currentMove={currentMove} cellItems={curState} onMove={onMove}/>
       <ol className="history">
-        <li><button onClick={() => goBackTo(0)}>{`Go to game start`}</button></li>
+        <li key={0}><button onClick={() => goBackTo(0)}>{`Go to game start`}</button></li>
         {moves.map( (element, key) => {          
-          return <li><button onClick={() => goBackTo(key + 1)}>{`Go to move # ${key + 1}`}</button></li>
+          return <li key={key + 1}><button onClick={() => goBackTo(key + 1)}>{`Go to move # ${key + 1}`}</button></li>
         })}
       </ol>
     </div>
