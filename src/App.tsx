@@ -83,7 +83,6 @@ const Board = ({currentMove, cellItems, onMove} : IboardProp) => {
 function App() {
   
   const [moves, setMoves] = useState<Imove[]>([]);
-  const [curState, setCurState] = useState<any[]>(Array(9).fill(null));
   const [currentMove, setCurrentMove] = useState(0);
 
 
@@ -96,14 +95,11 @@ function App() {
     setCurrentMove(target);
   }
 
-  useEffect(() => {
-    let tState = Array(9).fill(null);
-    for(let i = 0; i < currentMove; i++) {
-      const {position, icon} = moves[i];
-      tState[position] = icon;
-    }
-    setCurState(tState)
-  }, [currentMove])
+  const curState = Array(9).fill(null);
+  for(let i = 0; i < currentMove; i++) {
+    const {position, icon} = moves[i];
+    curState[position] = icon;
+  }
 
   return (
     <div className="game">
